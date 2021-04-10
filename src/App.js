@@ -5,9 +5,9 @@ import qs from 'qs';
 
 const SocialLogin = () => {
   const kakaoApi = `https://kauth.kakao.com/oauth/authorize?`
-                  + `response_type=code`
-                  + `&client_id=f0902789045141da12904349c1b6d0b5`
-                  + `&redirect_uri=http://localhost:3000/signin`
+  + `response_type=code`
+  + `&client_id=f0902789045141da12904349c1b6d0b5`
+  + `&redirect_uri=http://localhost:3000/signin`
 
   const kakaoLoginHandler = () => {
     window.location.assign(kakaoApi)
@@ -17,12 +17,13 @@ const SocialLogin = () => {
     const url = new URL(window.location.href)
     const authorizationCode = url.searchParams.get('code')
 
-    const data = { 'grant_type':'authorization_code',
-    'client_id':'f0902789045141da12904349c1b6d0b5',
-    'redirect_uri':'http://localhost:3000/signin',
-    'code':authorizationCode,
-    'client_secret':'tbwU9TKk12VqE97Uwjx7zixoR6nr4jNV' };
-    const options = {
+    const data = {
+      'grant_type':'authorization_code',
+      'client_id':'f0902789045141da12904349c1b6d0b5',
+      'redirect_uri':'http://localhost:3000/signin',
+      'code':authorizationCode,
+      'client_secret':'tbwU9TKk12VqE97Uwjx7zixoR6nr4jNV' };
+      const options = {
     method: 'POST',
     headers: { 'content-type': 'application/x-www-form-urlencoded' },
     data: qs.stringify(data),
@@ -33,6 +34,7 @@ const SocialLogin = () => {
     console.log('인증 코드', authorizationCode);
     console.log('토큰', tokenData)
   }, [])
+
   return (
     <div className="social-login">
       <h1>KAKAO LOGIN</h1>
